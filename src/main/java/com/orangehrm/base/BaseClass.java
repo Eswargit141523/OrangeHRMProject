@@ -50,7 +50,7 @@ public class BaseClass {
 		}
 	}
     
-	@BeforeMethod
+	
 	private void launchBrowser() {
 		// Initialize the WebDriver from the properties file
 
@@ -69,7 +69,7 @@ public class BaseClass {
 			System.out.println("Browser not supported");
 		}
 	}
-    @BeforeMethod
+    
 	private void configureBrowser() {
 		// Implicit wait
 		int implicitWait = Integer.parseInt(prop.getProperty("implicitWait"));
