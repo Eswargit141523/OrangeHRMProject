@@ -7,7 +7,6 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -15,6 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 import com.orangehrm.actiondriver.ActionDriver;
 
@@ -35,7 +35,7 @@ public class BaseClass {
 		prop.load(fis);
 	
 	}
-
+    
 	@BeforeMethod
 	public void setup() throws IOException {
 		System.out.println("Setting up driver for :" + this.getClass().getSimpleName());
@@ -49,7 +49,8 @@ public class BaseClass {
 			System.out.println("Action driver instance is created"+Thread.currentThread().getId());
 		}
 	}
-
+    
+	@BeforeMethod
 	private void launchBrowser() {
 		// Initialize the WebDriver from the properties file
 
@@ -68,7 +69,7 @@ public class BaseClass {
 			System.out.println("Browser not supported");
 		}
 	}
-
+    @BeforeMethod
 	private void configureBrowser() {
 		// Implicit wait
 		int implicitWait = Integer.parseInt(prop.getProperty("implicitWait"));
